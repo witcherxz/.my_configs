@@ -1,6 +1,8 @@
 check_sync(){
-	git -C ~/.my_configs/ fetch origin main > /dev/null 2>&1
-	if [ ! x"$(git rev-parse main)" = x"$(git rev-parse origin/main)" ]
+	GDIR=~/.my_configs/
+
+	git -C $GDIR fetch origin main > /dev/null 2>&1
+	if [ ! x"$(git -C $GDIR rev-parse main)" = x"$(git -C $GDIR rev-parse origin/main)" ]
 	then
     		echo 'WARN: .my_config is out of sync !!'
 	fi
